@@ -14,35 +14,19 @@
     <title>Автомобильные инциденты</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Панель навигации</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Главная</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Выпадающий список
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Действие</a>
-                    <a class="dropdown-item" href="#">Другое действие</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Другое</a>
-                </div>
-            </li>
-            <div class="container">
-                <div th:text="${user}"></div>
-            </div>
-        </ul>
-    </div>
-</nav>
-
 <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="#">Главная <span class="sr-only"></span></a>
+        <a class="nav-item nav-link" th:href="@{/createAccident}">Добавить инцидент</a>
+                <div th:text="${user}"></div>
+    </div>
+</div>
+</nav>
     <div class="row">
         <table class="table">
             <thead>
@@ -56,7 +40,7 @@
                 <td>
                     <span th:text="${accident.name}"></span>
                     <details>
-                       <p><em><summary>Подробное описание</summary></em></p>
+                        <p><em><summary>Подробное описание</summary></em></p>
                         <span th:text="${accident.text}"></span>
                     </details>
                 </td>
