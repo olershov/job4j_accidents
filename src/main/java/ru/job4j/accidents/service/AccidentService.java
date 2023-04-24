@@ -25,11 +25,6 @@ public class AccidentService implements AbstractAccidentService {
     }
 
     @Override
-    public boolean update(Accident accident) {
-        return repository.update(accident);
-    }
-
-    @Override
     public Optional<Accident> findById(int id) {
         return repository.findById(id);
     }
