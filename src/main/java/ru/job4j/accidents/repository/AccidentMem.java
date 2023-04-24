@@ -7,19 +7,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Repository
 public class AccidentMem implements AccidentRepository {
 
     private Map<Integer, Accident> accidents = new ConcurrentHashMap<>();
-    private static int id = 1;
+    private static AtomicInteger id = new AtomicInteger(1);
 
     public AccidentMem() {
-        Accident accident1 = new Accident(id++, "Превышение скорости", "Превышение скорости на 20 км/ч",
+        Accident accident1 = new Accident(id.incrementAndGet(), "Превышение скорости", "Превышение скорости на 20 км/ч",
                 "ул. Волгоградский проспект");
-        Accident accident2 = new Accident(id++, "Разметка", "Движение по выделенной полосе для общественного транспорта",
+        Accident accident2 = new Accident(id.incrementAndGet(), "Разметка", "Движение по выделенной полосе для общественного транспорта",
                 "ул. Земляной Вал");
-        Accident accident3 = new Accident(id++, "Ограничение дорожных знаков", "Остановка в запрещенном месте",
+        Accident accident3 = new Accident(id.incrementAndGet(), "Ограничение дорожных знаков", "Остановка в запрещенном месте",
                 "Луговой проезд");
        accidents.put(accident1.getId(), accident1);
        accidents.put(accident2.getId(), accident2);
@@ -35,7 +36,7 @@ public class AccidentMem implements AccidentRepository {
     @Override
     public Accident create(Accident accident) {
         if (accident.getId() == 0) {
-            accident.setId(id++);
+            accident.setId(id.incrementAndGet());
         }
         accidents.put(accident.getId(), accident);
         return accident;
