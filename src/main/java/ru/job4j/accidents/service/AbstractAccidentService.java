@@ -10,5 +10,7 @@ public interface AbstractAccidentService {
 
     public Accident create(Accident accident);
 
+    public boolean update(Accident accident);
+
     public Optional<Accident> findById(int id);
 }

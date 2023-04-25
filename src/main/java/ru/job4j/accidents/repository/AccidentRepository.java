@@ -11,5 +11,7 @@ public interface AccidentRepository {
 
     public Accident create(Accident accident);
 
+    public boolean update(Accident accident);
+
     public Optional<Accident> findById(int id);
 }

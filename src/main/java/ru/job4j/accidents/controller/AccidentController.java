@@ -11,6 +11,7 @@ import ru.job4j.accidents.service.AccidentTypeService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @AllArgsConstructor
@@ -35,6 +36,10 @@ public class AccidentController {
 
     @GetMapping("/formUpdateAccident")
     public String update(@RequestParam("id") int id, Model model) {
+        Optional<Accident> result = accidentService.findById(id);
+        if (result.isEmpty()) {
+            return "error/404";
+        }
         model.addAttribute("types", accidentTypeService.getAllTypes());
         model.addAttribute("accident", accidentService.findById(id).get());
         return "accident/update";
@@ -44,7 +49,7 @@ public class AccidentController {
     public String updateAccident(@ModelAttribute Accident accident) {
         int id = accident.getType().getId();
         accident.setType(accidentTypeService.findById(id));
-        accidentService.create(accident);
+        accidentService.update(accident);
         return "redirect:/index";
     }
 }

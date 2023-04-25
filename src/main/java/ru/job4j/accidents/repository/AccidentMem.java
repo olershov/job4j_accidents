@@ -39,11 +39,15 @@ public class AccidentMem implements AccidentRepository {
 
     @Override
     public Accident create(Accident accident) {
-        if (accident.getId() == 0) {
-            accident.setId(id.incrementAndGet());
-        }
+        accident.setId(id.incrementAndGet());
         accidents.put(accident.getId(), accident);
         return accident;
+    }
+
+    @Override
+    public boolean update(Accident accident) {
+        Accident result = accidents.put(accident.getId(), accident);
+        return result != null;
     }
 
     @Override
