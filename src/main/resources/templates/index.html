@@ -34,6 +34,7 @@
             <tr>
                 <th scope="col">Наименование заявки</th>
                 <th scope="col">Адрес</th>
+                <th scope="col">Тип инцидента</th>
             </tr>
             </thead>
             <tbody>
@@ -50,6 +51,9 @@
                 </td>
                 <td>
                     <span th:text="${accident.address}"></span>
+                </td>
+                <td>
+                    <span th:text="${accident.type.name}"></span>
                 </td>
             </tr>
             </tbody>
