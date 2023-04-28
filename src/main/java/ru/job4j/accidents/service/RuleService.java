@@ -1,32 +1,33 @@
 package ru.job4j.accidents.service;
 
 import org.springframework.stereotype.Service;
+import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.model.Rule;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+
+import java.util.*;
 
 @Service
 public class RuleService {
 
-    private List<Rule> rules = new ArrayList<>();
+    Map<Integer, Rule> rules = new HashMap<>();
 
     public RuleService() {
-        rules.add(new Rule(1, "Статья 1"));
-        rules.add(new Rule(2, "Статья 2"));
-        rules.add(new Rule(3, "Статья 3"));
+        rules.put(1, new Rule(1, "Статья 1"));
+        rules.put(2, new Rule(2, "Статья 2"));
+        rules.put(3, new Rule(3, "Статья 3"));
     }
 
     public List<Rule> getAllRules() {
-        return List.copyOf(rules);
+        List<Rule> result = new ArrayList<>(rules.values());
+        return result;
     }
 
-    public Set<Rule> findByIds(String[] ids) {
+    public Set<Rule> findByIds(String[] ids, Accident accident) {
         Set<Rule> result = new HashSet<>();
         for (String id : ids) {
-            result.add(rules.get(Integer.parseInt(id) - 1));
+            result.add(rules.get(Integer.parseInt(id)));
         }
-       return result;
+        accident.setRules(result);
+        return result;
     }
 }
