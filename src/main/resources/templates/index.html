@@ -35,6 +35,7 @@
                 <th scope="col">Наименование заявки</th>
                 <th scope="col">Адрес</th>
                 <th scope="col">Тип инцидента</th>
+                <th scope="col">Cтатьи</th>
             </tr>
             </thead>
             <tbody>
@@ -55,6 +56,7 @@
                 <td>
                     <span th:text="${accident.type.name}"></span>
                 </td>
+                <td th:text="${#strings.listJoin(accident.rules.![name], ', ')}"></td>
             </tr>
             </tbody>
         </table>

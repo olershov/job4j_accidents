@@ -25,5 +25,4 @@ public class AccidentTypeService {
     public AccidentType findById(int id) {
         return types.get(id - 1);
     }
-
 }
