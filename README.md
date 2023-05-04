@@ -14,12 +14,14 @@ job4j_accidents
 - JDK17
 - Spring Boot 2.7.3
 - Maven 3.8.1
+- PostgreSQL 13.3
 - Bootstrap 5
 - Thymeleaf 3.0.15
 
 ## Требуемое окружение:
 - JDK17
 - Maven 3.8.1
+- PostgreSQL 13.3
 
 ## Контактная информация:
 free_person@inbox.ru

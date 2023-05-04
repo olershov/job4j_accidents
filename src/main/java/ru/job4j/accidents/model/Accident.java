@@ -19,4 +19,8 @@ public class Accident {
     private String address;
     private AccidentType type;
     private Set<Rule> rules;
+
+    public boolean addRule(Rule rule) {
+        return rules.add(rule);
+    }
 }

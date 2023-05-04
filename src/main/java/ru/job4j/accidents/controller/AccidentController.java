@@ -5,21 +5,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.accidents.model.Accident;
-import ru.job4j.accidents.service.AbstractAccidentService;
-import ru.job4j.accidents.service.AccidentTypeService;
-import ru.job4j.accidents.service.RuleService;
+import ru.job4j.accidents.service.jdbc.AccidentJdbcService;
+import ru.job4j.accidents.service.jdbc.AccidentTypeJdbcService;
+import ru.job4j.accidents.service.jdbc.RuleJdbcService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
-import java.util.Set;
 
 @Controller
 @AllArgsConstructor
 public class AccidentController {
 
-    private final AbstractAccidentService accidentService;
-    private final AccidentTypeService accidentTypeService;
-    private final RuleService ruleService;
+    private final AccidentJdbcService accidentService;
+    private final AccidentTypeJdbcService accidentTypeService;
+    private final RuleJdbcService ruleService;
 
     @GetMapping("/createAccident")
     public String viewCreateAccident(Model model) {
@@ -44,7 +43,7 @@ public class AccidentController {
         }
         model.addAttribute("types", accidentTypeService.getAllTypes());
         model.addAttribute("rules", ruleService.getAllRules());
-        model.addAttribute("accident", accidentService.findById(id).get());
+        model.addAttribute("accident", result.get());
         return "accident/update";
     }
 
