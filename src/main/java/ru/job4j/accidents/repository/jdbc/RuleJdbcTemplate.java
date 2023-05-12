@@ -27,18 +27,9 @@ public class RuleJdbcTemplate implements RuleStore {
         return jdbc.query("select * from rules", rowMapper);
     }
 
-    @Override
     public Set<Rule> findByIds(String ids) {
         String query = "select * from rules where id in (".concat(ids).concat(")");
         List<Rule> result = jdbc.query(query, rowMapper);
         return new HashSet<>(result);
-    }
-
-    public Set<Rule> findRulesByAccidentId(int id) {
-       List<Rule> rules = jdbc.query(
-               "select * from rules where id in (select rule_id from accidents_rules where accident_id = ?)",
-                rowMapper, id
-       );
-        return new HashSet<>(rules);
     }
 }

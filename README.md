@@ -14,6 +14,7 @@ job4j_accidents
 - JDK17
 - Spring Boot 2.7.3
 - Maven 3.8.1
+- Hibernate 5.6.11.Final
 - PostgreSQL 13.3
 - Bootstrap 5
 - Thymeleaf 3.0.15

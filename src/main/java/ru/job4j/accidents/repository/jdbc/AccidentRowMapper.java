@@ -21,7 +21,6 @@ public class AccidentRowMapper implements RowMapper<Accident> {
         Accident result = map.get(rs.getInt("id"));
         if (result == null) {
             result = new Accident();
-            result.setRules(new HashSet<>());
             result.setId(rs.getInt("id"));
             result.setName(rs.getString("name"));
             result.setText(rs.getString("text"));
