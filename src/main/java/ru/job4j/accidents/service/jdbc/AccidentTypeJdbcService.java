@@ -7,6 +7,7 @@ import ru.job4j.accidents.model.AccidentType;
 import ru.job4j.accidents.repository.jdbc.AccidentTypeJdbcTemplate;
 import ru.job4j.accidents.service.AccidentTypeService;
 import java.util.List;
+import java.util.Optional;
 
 @AllArgsConstructor
 @Service
@@ -20,10 +21,10 @@ public class AccidentTypeJdbcService implements AccidentTypeService {
     }
 
     @Override
-    public AccidentType findById(Accident accident) {
+    public Optional<AccidentType> findById(Accident accident) {
         int id = accident.getType().getId();
-        AccidentType result = accidentTypeRepository.findById(id).get();
-        accident.setType(result);
+        Optional<AccidentType> result = accidentTypeRepository.findById(id);
+        accident.setType(result.get());
         return result;
     }
 }

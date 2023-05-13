@@ -4,13 +4,13 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import ru.job4j.accidents.service.hibernate.AccidentHibernateService;
+import ru.job4j.accidents.service.springdata.AccidentDataService;
 
 @Controller
 @AllArgsConstructor
 public class IndexController {
 
-    private final AccidentHibernateService accidentService;
+    private final AccidentDataService accidentService;
 
     @GetMapping("/index")
     public String index(Model model) {

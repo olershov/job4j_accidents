@@ -1,29 +1,29 @@
-package ru.job4j.accidents.service.hibernate;
+package ru.job4j.accidents.service.springdata;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.model.AccidentType;
-import ru.job4j.accidents.repository.hibernate.AccidentTypeHibernateRepository;
+import ru.job4j.accidents.repository.springdata.AccidentTypeDataRepository;
 import ru.job4j.accidents.service.AccidentTypeService;
+
 import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
 @Service
-public class AccidentTypeHibernateService implements AccidentTypeService {
+public class AccidentTypeDataService implements AccidentTypeService {
 
-    private final AccidentTypeHibernateRepository repository;
+    private final AccidentTypeDataRepository repository;
 
     @Override
     public List<AccidentType> getAllTypes() {
-        return repository.getAllTypes();
+        return repository.findAll();
     }
 
     @Override
     public Optional<AccidentType> findById(Accident accident) {
-        int id = accident.getType().getId();
-        Optional<AccidentType> result = repository.findById(id);
+        Optional<AccidentType> result =  repository.findById(accident.getType().getId());
         accident.setType(result.get());
         return result;
     }

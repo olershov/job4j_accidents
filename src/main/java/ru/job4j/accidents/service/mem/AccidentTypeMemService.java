@@ -5,10 +5,7 @@ import ru.job4j.accidents.model.Accident;
 import ru.job4j.accidents.model.AccidentType;
 import ru.job4j.accidents.service.AccidentTypeService;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class AccidentTypeMemService implements AccidentTypeService {
@@ -29,11 +26,11 @@ public class AccidentTypeMemService implements AccidentTypeService {
     }
 
     @Override
-    public AccidentType findById(Accident accident) {
+    public Optional<AccidentType> findById(Accident accident) {
         int id = accident.getType().getId();
         AccidentType result = types.get(id);
         accident.setType(result);
-        return result;
+        return Optional.of(result);
     }
 
 }
