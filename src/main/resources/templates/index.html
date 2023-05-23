@@ -24,6 +24,9 @@
             <div class="navbar-nav">
         <a class="nav-item nav-link active" href="#">Главная <span class="sr-only"></span></a>
         <a class="nav-item nav-link" th:href="@{/createAccident}">Добавить инцидент</a>
+        <a class="nav-item nav-link disabled">Вы вошли как:
+            <span th:text="${user.username}"></span>
+        </a>
         <a class="nav-item nav-link" th:href="@{/logout}">Выйти</a>
     </div>
 </div>
