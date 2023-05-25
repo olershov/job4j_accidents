@@ -4,5 +4,5 @@ CREATE TABLE if not exists authorities (
 );
 
 comment on table authorities is 'Таблица ролей';
-comment on column accident_types.id is 'Идентификатор роли';
-comment on column accident_types.name is 'Наименование роли';
+comment on column authorities.id is 'Идентификатор роли';
+comment on column authorities.authority is 'Наименование роли';
