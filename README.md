@@ -18,6 +18,8 @@ job4j_accidents
 - PostgreSQL 13.3
 - Bootstrap 5
 - Thymeleaf 3.0.15
+- Liquibase 4.15.0
+- H2 2.1.214
 
 ## Требуемое окружение:
 - JDK17
