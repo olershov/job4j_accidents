@@ -31,8 +31,10 @@ public class AccidentController {
 
     @PostMapping("/saveAccident")
     public String save(@ModelAttribute Accident accident, HttpServletRequest req) {
-        accidentTypeService.findById(accident);
-        ruleService.findByIds(req.getParameterValues("rIds"), accident);
+        if (accidentTypeService.findById(accident).isEmpty()
+                || ruleService.findByIds(req.getParameterValues("rIds"), accident).isEmpty()) {
+            return "error/404";
+        }
         accidentService.create(accident);
         return "redirect:/index";
     }
@@ -52,8 +54,10 @@ public class AccidentController {
 
     @PostMapping("/updateAccident")
     public String updateAccident(@ModelAttribute Accident accident, HttpServletRequest req) {
-        accidentTypeService.findById(accident);
-        ruleService.findByIds(req.getParameterValues("rIds"), accident);
+        if (accidentTypeService.findById(accident).isEmpty()
+                || ruleService.findByIds(req.getParameterValues("rIds"), accident).isEmpty()) {
+            return "error/404";
+        }
         accidentService.update(accident);
         return "redirect:/index";
     }
